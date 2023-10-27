@@ -1,5 +1,7 @@
 package com.example.guessadigit;
 
+import static java.lang.Math.abs;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,12 +30,12 @@ public class SecondActivity extends AppCompatActivity {
         tv1.setText("Is it " + String.valueOf(middle) + "?");
     }
     public void check_final(String condition){
-        if (end - start <= 2){
+        if (abs(end - start) <= 1){
             if(condition.equals("less")){
-                ans = start + 1;
+                ans = start;
             }
             else{
-                ans = end - 1;
+                ans = end;
             }
             intent.putExtra("ans", ans);
             startActivity(intent);
