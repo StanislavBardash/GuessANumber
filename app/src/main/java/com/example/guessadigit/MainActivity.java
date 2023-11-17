@@ -11,6 +11,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
     EditText et1,et2;
+    int val1, val2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         et1 = findViewById(R.id.bound1);
         et2 = findViewById(R.id.bound2);
         et1.setText(String.valueOf(0));
-        et2.setText(String.valueOf(10));
+        et2.setText(String.valueOf(100));
 
     }
 
@@ -26,15 +27,17 @@ public class MainActivity extends AppCompatActivity {
         String str1 = et1.getText().toString();
         String str2 = et2.getText().toString();
         if (TextUtils.isEmpty(str1)) {
-            et1.setError("You need to type a number!");
-            return;
+            val1 = 0;
+        }
+        else{
+            val1 = Integer.parseInt(str1);
         }
         if (TextUtils.isEmpty(str2)) {
-            et2.setError("You need to type a number!");
-            return;
+            val2 = 100;
         }
-        int val1 = Integer.parseInt(str1);
-        int val2 = Integer.parseInt(str2);
+        else{
+            val2 = Integer.parseInt(str2);
+        }
         if (val1 > val2) {
             et1.setError("First bound should be less than second one!");
             return;
